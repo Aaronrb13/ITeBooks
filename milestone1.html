@@ -31,14 +31,20 @@
         carlos.velez@ucr.edu 
     </div>
     <script>
-    $(document).ready(function(){
-     $.getJSON("https://www.googleapis.com/books/v1/volumes/Wfan6L9RGgYC", function(json)  
-        $("body").html("<div class= \"main_content\">" + json.volumeInfo.title + "</div class= \"main_content\">")
-         });
 
-    })
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.onload = function() {
+     const myObj = JSON.parse(this.responseText);
+     document.getElementById("demo").innerHTML = myObj.id;
+}   
+    xmlhttp.open("GET", "https://www.googleapis.com/books/v1/volumes/Wfan6L9RGgYC");
+    xmlhttp.send();
+
+
+
+
     </script>
-
+<p id="demo">test</p>
     <div class="footer">
         
     </div>
