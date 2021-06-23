@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <title>CARIT</title>
+</head>
+<body>
+    <div class="header">
+        <a href="http://ccse.kennesaw.edu"><img src="./pics/ksu_logo.png" alt="ksu_pic"></a>
+
+    <h1>Welcome to Aaron's IT eBook Website</h1>
+    <p>This webpage is for KSU course <a href="http://ccse.kennesaw.edu/it"> IT 4403</a></p>
+    </div>
+    
+    <div class="links">
+        <a href="index.html">Home</a>
+        <a href="milestone1.html">Milestone 1</a>
+        <a href="milestone2.html">Milestone 2</a>
+        <a href="milestone3.html">Milestone 3</a>
+        
+    </div>
+
+    <div class="main_content">
+        Dr. Carlos Vélez-Ibáñez , Director <br> 
+        Ernesto Galarza Applied Research Center <br>
+        Professor of Anthropology <br>
+        2203 Watkins Hall <br>
+        (909) 787-5018 <br>
+        carlos.velez@ucr.edu 
+    </div>
+    <script>
+    $(document).ready(function(){
+     $.getJSON("https://www.googleapis.com/books/v1/volumes/Wfan6L9RGgYC", function(json)  
+        $("body").html("<div class= \"main_content\">" + json.volumeInfo.title + "</div class= \"main_content\">")
+         });
+
+    })
+    </script>
+
+    <div class="footer">
+        
+    </div>
+</body>
+</html>
