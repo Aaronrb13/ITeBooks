@@ -1,0 +1,86 @@
+/*header style */
+*{
+    box-sizing: border-box;
+}
+.header {
+padding: 30px;
+text-align: center;
+color: white;
+background-color: teal; 
+font-size: 16;
+}
+
+.header img
+{
+    width: 100px;
+    height: 100px;
+}
+
+.header h1{
+    font-size: 30;
+}
+.header img:hover{
+    background-color: lightgray;
+    color: black;
+}
+
+/* link styles */
+.links {
+
+    overflow: hidden;
+  background-color: #333;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+}
+
+.links a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+   
+}
+
+.links a:hover
+{
+background-color: teal;
+color: black;
+}
+
+/*  Main Content style*/
+.main_content{
+    margin: 2em;
+    padding: 2em;
+    background-color: lightslategray;
+}
+
+/* Open Position Style */
+.openPositions
+{
+    margin: 5em;
+    padding: 5em;
+    background-color: lightslategray;
+}
+
+.openPositions h3
+{
+    text-align: center;
+}
+
+
+.openPositions form
+{
+    text-align: center;
+}
+
+ 
+/* footer style */
+
+.footer {
+padding: 1em;
+text-align: center;
+background-color: lightslategray;
+
+}
