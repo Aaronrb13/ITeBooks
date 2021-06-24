@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <title>CARIT</title>
+</head>
+<body>
+    <div class="header">
+        <a href="http://ccse.kennesaw.edu"><img src="./pics/ksu_logo.png" alt="ksu_pic"></a>
+
+    <h1>Welcome to Aaron's IT eBook Website</h1>
+    <p>This webpage is for KSU course <a href="http://ccse.kennesaw.edu/it"> IT 4403</a></p>
+    </div>
+    
+    <div class="links">
+        <a href="index.html">Home</a>
+        <a href="milestone1.html">Milestone 1</a>
+        <a href="milestone2.html">Milestone 2</a>
+        <a href="milestone3.html">Milestone 3</a>
+        <a href="milestone4.html">Milestone 4</a>
+        
+    </div>
+
+ <div class="main_content">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia ullam maxime exercitationem praesentium velit,
+         repellendus unde beatae reiciendis incidunt qui ipsa cum, dolorem delectus illo voluptatum sint dolores dolor sunt!
+         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam quod, ducimus quas ratione distinctio pariatur laudantium.
+          Maxime provident modi dolore necessitatibus repudiandae velit quam placeat, excepturi cupiditate quasi beatae nulla?
+    </div>
+    <script>
+    var testHTML = "";
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.onload = function() {
+     const myObj = JSON.parse(this.responseText);
+
+     testHTML = myObj.id;
+     document.getElementById("demo").innerHTML = testHTML;
+}   
+    xmlhttp.open("GET", "https://www.googleapis.com/books/v1/volumes/Wfan6L9RGgYC");
+    xmlhttp.send();
+
+
+
+
+    </script>
+<p id="demo">test</p>
+    <div class="footer">
+        
+    </div>
+</body>
+</html>
