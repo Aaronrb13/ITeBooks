@@ -24,35 +24,32 @@
         <h2></h2>
     </div>
 
- <div class="main_content" id = "demo">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia ullam maxime exercitationem praesentium velit,
-         repellendus unde beatae reiciendis incidunt qui ipsa cum, dolorem delectus illo voluptatum sint dolores dolor sunt!
-         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam quod, ducimus quas ratione distinctio pariatur laudantium.
-          Maxime provident modi dolore necessitatibus repudiandae velit quam placeat, excepturi cupiditate quasi beatae nulla?
-          
+ 
     </div>
-    <script>
-    var testHTML = "";
-    const xmlhttp = new XMLHttpRequest();
-    xmlhttp.onload = function() {
-     const myObj = JSON.parse(this.responseText);
-    
-     //testHTML = myObj.volumeInfo.title + "</br> <img src = " myObj.volumeInfo.imageLinks.thumbnail; + ">";
-     testHTML += "<br><img src='"+myObj.volumeInfo.imageLinks.thumbnail + "'>";
-     testHTML += "Title: " + myObj.volumeInfo.title;
-     testHTML +=  "<br>" + "Description: " + myObj.volumeInfo.description;
-     //myObj.volumeInfo.title; 
-     document.getElementById("demo").innerHTML = testHTML;
-    }   
-    xmlhttp.open("GET", "https://www.googleapis.com/books/v1/volumes/Wfan6L9RGgYC");
-    xmlhttp.send();
+<script>
 
-
-
-
-    </script>
-<p>test</p>
-    <div class="footer">
+$(function(){
+        //getJSON is a jQuery function to call a web API; will cover this function later
+        $.getJSON("https://www.googleapis.com/books/v1/volumes?q=modern%20web", function (json)
+        {
+			var booksHTML="";
+            //booksHTML += json.items[1].id;
+			for (i in json.items)
+			{
+                booksHTML+= '<div id = "demo" class ="main_content">';
+                booksHTML+= "<br><img src='"+json.items[i].volumeInfo.imageLinks.thumbnail + "'>";
+                booksHTML+=  "Title: " + json.items[i].volumeInfo.title;
+                booksHTML+= "</br>" + "Description: " + json.items[i].volumeInfo.description;
+                
+                booksHTML+=  "</div>"; 
+               
+			}
+			$("#demo").before(booksHTML);
+		});
+    })
+</script>
+<p></p>
+    <div class="footer" id= "demo">
         
     </div>
 </body>
