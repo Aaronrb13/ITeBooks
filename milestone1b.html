@@ -29,11 +29,11 @@
 <script>
 
 $(function(){
-        //getJSON is a jQuery function to call a web API; will cover this function later
+       
         $.getJSON("https://www.googleapis.com/books/v1/volumes?q=modern%20web", function (json)
         {
 			var booksHTML="";
-            //booksHTML += json.items[1].id;
+            
 			for (i in json.items)
 			{
                 booksHTML+= '<div id = "demo" class ="main_content">';
