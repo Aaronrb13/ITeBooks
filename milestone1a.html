@@ -16,28 +16,34 @@
     
     <div class="links">
         <a href="index.html">Home</a>
-        <a href="milestone1.html">Milestone 1</a>
+        <a href="milestone1a.html">Milestone 1a</a>
+        <a href="milestone1b.html">Milestone 1b</a>
         <a href="milestone2.html">Milestone 2</a>
         <a href="milestone3.html">Milestone 3</a>
         <a href="milestone4.html">Milestone 4</a>
-        
+        <h2></h2>
     </div>
 
- <div class="main_content">
+ <div class="main_content" id = "demo">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia ullam maxime exercitationem praesentium velit,
          repellendus unde beatae reiciendis incidunt qui ipsa cum, dolorem delectus illo voluptatum sint dolores dolor sunt!
          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam quod, ducimus quas ratione distinctio pariatur laudantium.
           Maxime provident modi dolore necessitatibus repudiandae velit quam placeat, excepturi cupiditate quasi beatae nulla?
+          
     </div>
     <script>
     var testHTML = "";
     const xmlhttp = new XMLHttpRequest();
     xmlhttp.onload = function() {
      const myObj = JSON.parse(this.responseText);
-
-     testHTML = myObj.id;
+    
+     //testHTML = myObj.volumeInfo.title + "</br> <img src = " myObj.volumeInfo.imageLinks.thumbnail; + ">";
+     testHTML += "<br><img src='"+myObj.volumeInfo.imageLinks.thumbnail + "'>";
+     testHTML += "Title: " + myObj.volumeInfo.title;
+     testHTML +=  "<br>" + "Description: " + myObj.volumeInfo.description;
+     //myObj.volumeInfo.title; 
      document.getElementById("demo").innerHTML = testHTML;
-}   
+    }   
     xmlhttp.open("GET", "https://www.googleapis.com/books/v1/volumes/Wfan6L9RGgYC");
     xmlhttp.send();
 
@@ -45,7 +51,7 @@
 
 
     </script>
-<p id="demo">test</p>
+<p>test</p>
     <div class="footer">
         
     </div>
