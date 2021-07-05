@@ -27,16 +27,18 @@
 
    
     <div class="main_content">
-        <input type="text" id="test" name="test" value="test01" ><br><br>
+        <label>Search by book title </label> </br>
+        <input type="text" id="BookSearch" name="BookSearch" value="Enter Search Term" ><br><br>
         <button type="button"> button </button>
     </div>
 <script>
 $("button").click(function(){
 $(function(){
        
-       var testField = $("#test").attr('value');
-       alert(testField);
-        $.getJSON("https://www.googleapis.com/books/v1/volumes?q=modern%20web", function (json)
+       var testField = $("#BookSearch").val()
+       //alert(testField);
+      // var qs = new Querystring();
+        $.getJSON("https://www.googleapis.com/books/v1/volumes?q=" + testField + "&maxResults=20", function (json)
         {
 			var booksHTML="";
             
@@ -46,7 +48,9 @@ $(function(){
                 booksHTML+= "<br><img src='"+json.items[i].volumeInfo.imageLinks.thumbnail + "'>";
                 booksHTML+=  "Title: " + json.items[i].volumeInfo.title;
                 booksHTML+= "</br>" + "Description: " + json.items[i].volumeInfo.description;
+                booksHTML+=  "</br>" + "<a href = milestone2BookDetails.html?bookInfo1='" + i + "'>"  +  "Book Details" + "</a>";
                 
+
                 booksHTML+=  "</div>"; 
                
 			}
