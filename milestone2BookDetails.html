@@ -25,46 +25,37 @@
         <a href="milestone2MyBookshelf.html">My Bookshelf</a>
     </div>
 
-   
-    <div class="main_content">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia ullam maxime exercitationem praesentium velit,
-         repellendus unde beatae reiciendis incidunt qui ipsa cum, dolorem delectus illo voluptatum sint dolores dolor sunt!
-         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam quod, ducimus quas ratione distinctio pariatur laudantium.
-          Maxime provident modi dolore necessitatibus repudiandae velit quam placeat, excepturi cupiditate quasi beatae nulla?
-    </div>
 
 <script>
 
      
 
-$(function(){
+
     let qs = window.location.search;
     let urlParams = new URLSearchParams(qs);
     var test = urlParams.get('bookInfo1');
     console.log(test);
-    bookIndex = test.slice(1,2);
+    bookIndex = test.replace(/'/g, '');
     console.log(bookIndex);
     var bookLink = localStorage.getItem(bookIndex); 
 
        console.log(bookLink);
 
- $.getJSON(bookLink, function (json)
-        {
-			var booksHTML="";
-            
-			for (i in json.items)
-			{
-                booksHTML+= '<div id = "demo" class ="main_content">';
-                booksHTML+= "<br><img src='"+json.items[i].volumeInfo.imageLinks.thumbnail + "'>";
-                booksHTML+=  "Title: " + json.items[i].volumeInfo.title;
-                booksHTML+= "</br>" + "Description: " + json.items[i].volumeInfo.description;
-                
-                booksHTML+=  "</div>"; 
-               
-			}
-			$("#demo").before(booksHTML);
-		});
-    })
+var testHTML = "";
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.onload = function() {
+     const myObj = JSON.parse(this.responseText);
+    
+     //testHTML = myObj.volumeInfo.title + "</br> <img src = " myObj.volumeInfo.imageLinks.thumbnail; + ">";
+     testHTML += "<br><img src='"+myObj.volumeInfo.imageLinks.thumbnail + "'>";
+     testHTML += "Title: " + myObj.volumeInfo.title;
+     testHTML +=  "<br>" + "Description: " + myObj.volumeInfo.description;
+     //myObj.volumeInfo.title; 
+     document.getElementById("demo").innerHTML = testHTML;
+    }   
+    xmlhttp.open("GET", bookLink);
+    xmlhttp.send();
+
 </script>    
 
     <div class="footer" id = "demo">
