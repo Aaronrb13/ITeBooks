@@ -33,7 +33,41 @@
           Maxime provident modi dolore necessitatibus repudiandae velit quam placeat, excepturi cupiditate quasi beatae nulla?
     </div>
 
-    <div class="footer">
+<script>
+
+     
+
+$(function(){
+    let qs = window.location.search;
+    let urlParams = new URLSearchParams(qs);
+    var test = urlParams.get('bookInfo1');
+    console.log(test);
+    bookIndex = test.slice(1,2);
+    console.log(bookIndex);
+    var bookLink = localStorage.getItem(bookIndex); 
+
+       console.log(bookLink);
+
+ $.getJSON(bookLink, function (json)
+        {
+			var booksHTML="";
+            
+			for (i in json.items)
+			{
+                booksHTML+= '<div id = "demo" class ="main_content">';
+                booksHTML+= "<br><img src='"+json.items[i].volumeInfo.imageLinks.thumbnail + "'>";
+                booksHTML+=  "Title: " + json.items[i].volumeInfo.title;
+                booksHTML+= "</br>" + "Description: " + json.items[i].volumeInfo.description;
+                
+                booksHTML+=  "</div>"; 
+               
+			}
+			$("#demo").before(booksHTML);
+		});
+    })
+</script>    
+
+    <div class="footer" id = "demo">
         
     </div>
 </body>

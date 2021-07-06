@@ -45,11 +45,12 @@ $(function(){
 			for (i in json.items)
 			{
                 booksHTML+= '<div id = "demo" class ="main_content">';
-                booksHTML+= "<br><img src='"+json.items[i].volumeInfo.imageLinks.thumbnail + "'>";
+                booksHTML+= "<br><img src='"+json.items[i].volumeInfo.imageLinks.smallThumbnail + "'>";
                 booksHTML+=  "Title: " + json.items[i].volumeInfo.title;
                 booksHTML+= "</br>" + "Description: " + json.items[i].volumeInfo.description;
                 booksHTML+=  "</br>" + "<a href = milestone2BookDetails.html?bookInfo1='" + i + "'>"  +  "Book Details" + "</a>";
-                
+
+                localStorage.setItem(i, json.items[i].selfLink);
 
                 booksHTML+=  "</div>"; 
                
