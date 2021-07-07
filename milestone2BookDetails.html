@@ -1,0 +1,69 @@
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <title>CARIT</title>
+</head>
+<body>
+    <div class="header">
+        <a href="http://ccse.kennesaw.edu"><img src="./pics/ksu_logo.png" alt="ksu_pic"></a>
+
+         <h1>Book Details Page</h1>
+        <p>This webpage is for KSU course <a href="http://ccse.kennesaw.edu/it"> IT 4403</a></p>
+    </div>
+    
+    <div class="links">
+        <a href="index.html">Home</a>
+        <a href="milestone1a.html">Milestone 1a</a>
+        <a href="milestone1b.html">Milestone 1b</a>
+        <a href="milestone2.html">Milestone 2</a>
+        <a href="milestone3.html">Milestone 3</a>
+        <a href="milestone4.html">Milestone 4</a>
+        
+        <a href="milestone2MyBookshelf.html">My Bookshelf</a>
+    </div>
+
+
+<script>
+
+     
+
+
+    let qs = window.location.search;
+    let urlParams = new URLSearchParams(qs);
+    var test = urlParams.get('bookInfo1');
+    console.log(test);
+    bookIndex = test.replace(/'/g, '');
+    console.log(bookIndex);
+    var bookLink = localStorage.getItem(bookIndex); 
+
+       console.log(bookLink);
+
+var testHTML = "";
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.onload = function() {
+     const myObj = JSON.parse(this.responseText);
+    
+     //testHTML = myObj.volumeInfo.title + "</br> <img src = " myObj.volumeInfo.imageLinks.thumbnail; + ">";
+     testHTML += "<br><img src='"+myObj.volumeInfo.imageLinks.thumbnail + "'>";
+     testHTML += "<br>" + "Title: " + myObj.volumeInfo.title;
+     testHTML += "<br>" + "Publisher: " + myObj.volumeInfo.publisher;
+      testHTML += "<br>" + "Average Rating: " + myObj.volumeInfo.averageRating;
+      testHTML += "<br>" + "Page Count: " + myObj.volumeInfo.pageCount;
+     testHTML +=  "<br>" + "Description: " + myObj.volumeInfo.description;
+
+     //myObj.volumeInfo.title; 
+     document.getElementById("demo").innerHTML = testHTML;
+    }   
+    xmlhttp.open("GET", bookLink);
+    xmlhttp.send();
+
+</script>    
+
+    <div class="footer" id = "demo">
+        
+    </div>
+</body>
+</html>

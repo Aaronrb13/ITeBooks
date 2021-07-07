@@ -21,24 +21,17 @@
         <a href="milestone2.html">Milestone 2</a>
         <a href="milestone3.html">Milestone 3</a>
         <a href="milestone4.html">Milestone 4</a>
-        
+       
         <a href="milestone2MyBookshelf.html">My Bookshelf</a>
     </div>
 
-   
-    <div class="main_content">
-        <label>Search Terms: </label> </br>
-        <input type="text" id="BookSearch" name="BookSearch" value="Enter Search Term" ><br><br>
-        <button type="button"> Search </button>
-    </div>
 <script>
-$("button").click(function(){
 $(function(){
        
        var testField = $("#BookSearch").val()
        //alert(testField);
       // var qs = new Querystring();
-        $.getJSON("https://www.googleapis.com/books/v1/volumes?q=" + testField + "&maxResults=20", function (json)
+        $.getJSON("https://www.googleapis.com/books/v1/volumes?q=" + "Cats" + "&maxResults=5", function (json)
         {
 			var booksHTML="";
             
@@ -59,9 +52,9 @@ $(function(){
          //   $("#button").
 		});
     })
-    });
+
 </script>
-    <div class="footer" id ="demo">
+    <div class="footer" id= "demo">
         
     </div>
 </body>
