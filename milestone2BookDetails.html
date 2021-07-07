@@ -10,7 +10,7 @@
     <div class="header">
         <a href="http://ccse.kennesaw.edu"><img src="./pics/ksu_logo.png" alt="ksu_pic"></a>
 
-         <h1>Book Search Page</h1>
+         <h1>Book Details Page</h1>
         <p>This webpage is for KSU course <a href="http://ccse.kennesaw.edu/it"> IT 4403</a></p>
     </div>
     
@@ -48,8 +48,12 @@ var testHTML = "";
     
      //testHTML = myObj.volumeInfo.title + "</br> <img src = " myObj.volumeInfo.imageLinks.thumbnail; + ">";
      testHTML += "<br><img src='"+myObj.volumeInfo.imageLinks.thumbnail + "'>";
-     testHTML += "Title: " + myObj.volumeInfo.title;
+     testHTML += "<br>" + "Title: " + myObj.volumeInfo.title;
+     testHTML += "<br>" + "Publisher: " + myObj.volumeInfo.publisher;
+      testHTML += "<br>" + "Average Rating: " + myObj.volumeInfo.averageRating;
+      testHTML += "<br>" + "Page Count: " + myObj.volumeInfo.pageCount;
      testHTML +=  "<br>" + "Description: " + myObj.volumeInfo.description;
+
      //myObj.volumeInfo.title; 
      document.getElementById("demo").innerHTML = testHTML;
     }   

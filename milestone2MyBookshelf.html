@@ -25,15 +25,36 @@
         <a href="milestone2MyBookshelf.html">My Bookshelf</a>
     </div>
 
-   
-    <div class="main_content">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia ullam maxime exercitationem praesentium velit,
-         repellendus unde beatae reiciendis incidunt qui ipsa cum, dolorem delectus illo voluptatum sint dolores dolor sunt!
-         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam quod, ducimus quas ratione distinctio pariatur laudantium.
-          Maxime provident modi dolore necessitatibus repudiandae velit quam placeat, excepturi cupiditate quasi beatae nulla?
-    </div>
+<script>
+$(function(){
+       
+       var testField = $("#BookSearch").val()
+       //alert(testField);
+      // var qs = new Querystring();
+        $.getJSON("https://www.googleapis.com/books/v1/volumes?q=" + "Cats" + "&maxResults=5", function (json)
+        {
+			var booksHTML="";
+            
+			for (i in json.items)
+			{
+                booksHTML+= '<div id = "demo" class ="main_content">';
+                booksHTML+= "<br><img src='"+json.items[i].volumeInfo.imageLinks.smallThumbnail + "'>";
+                booksHTML+=  "Title: " + json.items[i].volumeInfo.title;
+                booksHTML+= "</br>" + "Description: " + json.items[i].volumeInfo.description;
+                booksHTML+=  "</br>" + "<a href = milestone2BookDetails.html?bookInfo1='" + i + "'>"  +  "Book Details" + "</a>";
 
-    <div class="footer">
+                localStorage.setItem(i, json.items[i].selfLink);
+
+                booksHTML+=  "</div>"; 
+               
+			}
+			$("#demo").before(booksHTML);
+         //   $("#button").
+		});
+    })
+
+</script>
+    <div class="footer" id= "demo">
         
     </div>
 </body>
