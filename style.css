@@ -56,6 +56,21 @@ color: black;
     background-color: lightslategray;
 }
 
+.main_content_grid{
+    display:flex;
+    flex-wrap:wrap;
+    width: auto;
+    height:fit-content;
+    border: 3px solid red;
+}
+/* grid view style */
+.grid_view{
+margin: 2em;
+padding: 2em;
+background-color: lightslategray;
+width: 25%;
+height: 25%;
+}
 /* Open Position Style */
 .openPositions
 {
