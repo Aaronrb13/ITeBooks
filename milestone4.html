@@ -30,6 +30,11 @@
         <label>Search Terms: </label> </br>
         <input type="text" id="BookSearch" name="BookSearch" value="Enter Search Term" ><br><br>
         <button type="button" id= "searchButton"> Search </button>
+
+
+        <button type="button" id= "gridViewButton"> Grid View </button>
+        <button type="button" id= "listViewButton"> List View </button>
+
     </div>
 
     <div class="main_content" id="Bookshelf">
@@ -65,10 +70,82 @@ $(function(){
     })
 
 
-
+// Search Button
 $("#searchButton").click(function(){
 $(function(){
         $(".main_content_grid").remove();
+        $(".list_view_content_grid").remove();
+       var testField = $("#BookSearch").val()
+       //alert(testField);
+      // var qs = new Querystring();
+        $.getJSON("https://www.googleapis.com/books/v1/volumes?q=" + testField + "&maxResults=20", function (json)
+        {
+           
+			var booksHTML="";
+             booksHTML+= '<div class ="main_content_grid">';
+			for (i in json.items)
+			{
+               
+                booksHTML+= '<div id = "demo" class ="grid_view">';
+                booksHTML+= "<br><img src='"+json.items[i].volumeInfo.imageLinks.smallThumbnail + "'>";
+                booksHTML+=  "</br>" + "Title: " + json.items[i].volumeInfo.title;
+               
+                booksHTML+=  "</br>" + "<a href = milestone2BookDetails.html?bookInfo1='" + i + "'>"  +  "Book Details" + "</a>";
+
+                localStorage.setItem(i, json.items[i].selfLink);
+
+                booksHTML+=  "</div>"; 
+                
+               
+			}
+            booksHTML+=  "</div>"; 
+			$("#Bookshelf").before(booksHTML);
+         //   $("#button").
+		});
+    })
+    });
+
+// List View Button
+    $("#listViewButton").click(function(){
+$(function(){
+        $(".main_content_grid").remove();
+        $(".list_view_content_grid").remove();
+
+       var testField = $("#BookSearch").val()
+       //alert(testField);
+      // var qs = new Querystring();
+        $.getJSON("https://www.googleapis.com/books/v1/volumes?q=" + testField + "&maxResults=20", function (json)
+        {
+           
+			var booksHTML="";
+             booksHTML+= '<div class ="list_view_content_grid">';
+			for (i in json.items)
+			{
+               
+                booksHTML+= '<div id = "demo" class ="main_content">';
+                booksHTML+= "<br><img src='"+json.items[i].volumeInfo.imageLinks.smallThumbnail + "'>";
+                booksHTML+=  "</br>" + "Title: " + json.items[i].volumeInfo.title;
+               
+                booksHTML+=  "</br>" + "<a href = milestone2BookDetails.html?bookInfo1='" + i + "'>"  +  "Book Details" + "</a>";
+
+                localStorage.setItem(i, json.items[i].selfLink);
+
+                booksHTML+=  "</div>"; 
+                
+               
+			}
+            booksHTML+=  "</div>"; 
+			$("#Bookshelf").before(booksHTML);
+         //   $("#button").
+		});
+    })
+    });
+
+// Grid View Button
+$("#gridViewButton").click(function(){
+$(function(){
+        $(".main_content_grid").remove();
+        $(".list_view_content_grid").remove();
        var testField = $("#BookSearch").val()
        //alert(testField);
       // var qs = new Querystring();

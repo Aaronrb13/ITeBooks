@@ -63,13 +63,17 @@ color: black;
     height:fit-content;
     border: 3px solid red;
 }
+
+.list_view_content_grid{
+    display:block;
+}
 /* grid view style */
 .grid_view{
 margin: 2em;
 padding: 2em;
 background-color: lightslategray;
-width: 25%;
-height: 25%;
+width: 20%;
+height: 20%;
 }
 /* Open Position Style */
 .openPositions
