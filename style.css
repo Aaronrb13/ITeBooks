@@ -56,6 +56,39 @@ color: black;
     background-color: lightslategray;
 }
 
+.main_content_grid{
+    display:flex;
+    flex-wrap:wrap;
+    width: auto;
+    height:fit-content;
+    
+}
+
+.list_view_content_grid{
+    display:block;
+}
+
+.mybookshelf_main_content_grid{
+    display:flex;
+    flex-wrap:wrap;
+    width: auto;
+    height:fit-content;
+    
+
+}
+
+.mybookshelf_list_view_content_grid{
+    display:block;
+    
+}
+/* grid view style */
+.grid_view{
+margin: 2em;
+padding: 2em;
+background-color: lightslategray;
+width: 20%;
+height: 20%;
+}
 /* Open Position Style */
 .openPositions
 {
