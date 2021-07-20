@@ -61,11 +61,25 @@ color: black;
     flex-wrap:wrap;
     width: auto;
     height:fit-content;
-    border: 3px solid red;
+    
 }
 
 .list_view_content_grid{
     display:block;
+}
+
+.mybookshelf_main_content_grid{
+    display:flex;
+    flex-wrap:wrap;
+    width: auto;
+    height:fit-content;
+    
+
+}
+
+.mybookshelf_list_view_content_grid{
+    display:block;
+    
 }
 /* grid view style */
 .grid_view{

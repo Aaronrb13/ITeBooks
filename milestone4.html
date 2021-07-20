@@ -38,7 +38,9 @@
     </div>
 
     <div class="main_content" id="Bookshelf">
-        My Bookshelf Below
+        My Bookshelf Below </br> </br>
+        <button type="button" id= "bookshelfGridViewButton"> Grid View </button>
+        <button type="button" id= "bookshelfListViewButton"> List View </button>
          </div>
 
 <script>
@@ -50,7 +52,7 @@ $(function(){
         $.getJSON("https://www.googleapis.com/books/v1/volumes?q=" + "Cats" + "&maxResults=5", function (json)
         {
 			var booksHTML="";
-            
+            booksHTML+= '<div class ="mybookshelf_list_view_content_grid">';
 			for (i in json.items)
 			{
                 booksHTML+= '<div id = "demo" class ="main_content">';
@@ -62,8 +64,9 @@ $(function(){
                 localStorage.setItem(i, json.items[i].selfLink);
 
                 booksHTML+=  "</div>"; 
-               
+                
 			}
+            booksHTML+= "</div>"
 			$("#Bookshelf").after(booksHTML);
          //   $("#button").
 		});
@@ -171,6 +174,79 @@ $(function(){
 			}
             booksHTML+=  "</div>"; 
 			$("#Bookshelf").before(booksHTML);
+         //   $("#button").
+		});
+    })
+    });
+
+
+// my bookshelf Grid View Button
+$("#bookshelfGridViewButton").click(function(){
+$(function(){
+        $(".mybookshelf_main_content_grid").remove();
+        $(".mybookshelf_list_view_content_grid").remove();
+      // var testField = $("#BookSearch").val()
+       //alert(testField);
+      // var qs = new Querystring();
+       $.getJSON("https://www.googleapis.com/books/v1/volumes?q=" + "Cats" + "&maxResults=5", function (json)
+        {
+           
+			var booksHTML="";
+             booksHTML+= '<div class ="mybookshelf_main_content_grid">';
+			for (i in json.items)
+			{
+               
+                booksHTML+= '<div id = "demo" class ="grid_view">';
+                booksHTML+= "<br><img src='"+json.items[i].volumeInfo.imageLinks.smallThumbnail + "'>";
+                booksHTML+=  "</br>" + "Title: " + json.items[i].volumeInfo.title;
+               
+                booksHTML+=  "</br>" + "<a href = milestone2BookDetails.html?bookInfo1='" + i + "'>"  +  "Book Details" + "</a>";
+
+                localStorage.setItem(i, json.items[i].selfLink);
+
+                booksHTML+=  "</div>"; 
+                
+               
+			}
+            booksHTML+=  "</div>"; 
+			$("#Bookshelf").after(booksHTML);
+         //   $("#button").
+		});
+    })
+    });
+
+
+// my bookshelf list View Button
+$("#bookshelfListViewButton").click(function(){
+$(function(){
+        $(".mybookshelf_main_content_grid").remove();
+        $(".mybookshelf_list_view_content_grid").remove();
+      // var testField = $("#BookSearch").val()
+       //alert(testField);
+      // var qs = new Querystring();
+       $.getJSON("https://www.googleapis.com/books/v1/volumes?q=" + "Cats" + "&maxResults=5", function (json)
+        {
+           
+			var booksHTML="";
+            booksHTML+= '<div class ="mybookshelf_list_view_content_grid">';
+			for (i in json.items)
+			{
+               
+                booksHTML+= '<div id = "demo" class ="main_content">';
+                booksHTML+= "<br><img src='"+json.items[i].volumeInfo.imageLinks.smallThumbnail + "'>";
+                booksHTML+=  "</br>" + "Title: " + json.items[i].volumeInfo.title;
+               
+                booksHTML+=  "</br>" + "<a href = milestone2BookDetails.html?bookInfo1='" + i + "'>"  +  "Book Details" + "</a>";
+
+                localStorage.setItem(i, json.items[i].selfLink);
+
+                booksHTML+=  "</div>"; 
+                
+               
+			}
+
+            booksHTML +=  "</div>"; 
+			$("#Bookshelf").after(booksHTML);
          //   $("#button").
 		});
     })
